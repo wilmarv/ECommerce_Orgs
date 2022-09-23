@@ -4,7 +4,7 @@ import {
   Montserrat_700Bold
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import Cesta from "./src/view/Cesta";
 import mock from "./src/mocks/cesta";
 
@@ -21,9 +21,9 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView>
-      <StatusBar />
+    <View>
+      <StatusBar backgroundColor="#000" />
       <Cesta {...mock} />
-    </SafeAreaView>
+    </View>
   );
 }

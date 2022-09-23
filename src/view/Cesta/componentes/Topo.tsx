@@ -1,14 +1,14 @@
 import { Image, StyleSheet, Dimensions } from "react-native";
 import Texto from "../../../components/Texto";
-import { TopoParams } from "../../../mocks/cesta";
+import ITopo from "../../../interface/topo";
 
 const width = Dimensions.get('screen').width;
 
-function Topo({ titulo }: TopoParams) {
+function Topo({ titulo }: ITopo) {
     return (
         <>
             <Image source={require("../../../../assets/topo.png")} style={styles.topo} />
-            <Texto style={styles.titulo}>{titulo}</Texto>
+            <Texto style={styles.titulo} children={titulo} />
         </>
     );
 }

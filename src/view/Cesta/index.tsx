@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Detalhes from "./componentes/Detalhes";
 import Topo from "./componentes/Topo";
-import { CestaParams } from "../../mocks/cesta"
+import ICesta from "../../interface/cesta"
 
-function Cesta({ topo, detalhes }: CestaParams) {
+function Cesta({ topo, detalhes }: ICesta) {
     return (
         <>
             <Topo {...topo} />

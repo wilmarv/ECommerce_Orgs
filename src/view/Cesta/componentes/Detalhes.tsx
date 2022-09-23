@@ -1,20 +1,24 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Texto from "../../../components/Texto";
-import { DetalhesParams } from "../../../mocks/cesta";
+import IDetalhes from "../../../interface/detalhes";
 
-function Detalhes({ descricao, logoFazenda, nome, nomeFazenda, preco }: DetalhesParams): JSX.Element {
+function Detalhes({ descricao, logoFazenda, nome, nomeFazenda, preco, botao }: IDetalhes): JSX.Element {
     return (
         <>
-            <Texto style={styles.nome}>{nome}</Texto>
+            <Texto style={styles.nome} children={nome} />
 
             <View style={styles.fazenda}>
                 <Image style={styles.imagemFazenda} source={logoFazenda} />
-                <Texto style={styles.nomeFazenda}>{nomeFazenda}</Texto>
+                <Texto style={styles.nomeFazenda} children={nomeFazenda} />
             </View>
 
-            <Texto style={styles.descricao}>{descricao}</Texto>
-            <Texto style={styles.preco}>{preco}</Texto>
-
+            <Texto style={styles.descricao} children={descricao} />
+            <Texto style={styles.preco} children={preco} />
+            <TouchableOpacity
+                style={styles.botao}
+                children={
+                    <Texto style={styles.textoBotao} children={botao} />
+                } />
         </>
     );
 }
@@ -50,5 +54,18 @@ const styles = StyleSheet.create({
         fontSize: 26,
         lineHeight: 42,
         marginTop: 8
+    },
+    botao: {
+        marginTop: 16,
+        backgroundColor: "#2A9F85",
+        paddingVertical: 16,
+        borderRadius: 6
+    },
+    textoBotao: {
+        textAlign: "center",
+        color: "white",
+        fontSize: 16,
+        fontWeight: "bold",
+        lineHeight: 26
     }
 });
