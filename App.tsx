@@ -21,7 +21,7 @@ export default function App() {
   }
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <StatusBar backgroundColor="#000" />
       <Cesta {...mock} />
     </View>

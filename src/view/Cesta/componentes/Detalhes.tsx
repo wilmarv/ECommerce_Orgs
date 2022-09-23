@@ -1,4 +1,5 @@
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
+import Button from "../../../components/Button";
 import Texto from "../../../components/Texto";
 import IDetalhes from "../../../interface/detalhes";
 
@@ -14,11 +15,7 @@ function Detalhes({ descricao, logoFazenda, nome, nomeFazenda, preco, botao }: I
 
             <Texto style={styles.descricao} children={descricao} />
             <Texto style={styles.preco} children={preco} />
-            <TouchableOpacity
-                style={styles.botao}
-                children={
-                    <Texto style={styles.textoBotao} children={botao} />
-                } />
+            <Button children={botao} />
         </>
     );
 }
@@ -55,17 +52,4 @@ const styles = StyleSheet.create({
         lineHeight: 42,
         marginTop: 8
     },
-    botao: {
-        marginTop: 16,
-        backgroundColor: "#2A9F85",
-        paddingVertical: 16,
-        borderRadius: 6
-    },
-    textoBotao: {
-        textAlign: "center",
-        color: "white",
-        fontSize: 16,
-        fontWeight: "bold",
-        lineHeight: 26
-    }
 });
