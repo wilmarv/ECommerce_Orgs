@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
-
-import { carregaProdutores } from "../../../services/carregaDados"
+import useProdutores from "../../../hooks/useProdutores";
 import Produtor from "./Produtor";
 
 interface IParams {
@@ -10,14 +8,7 @@ interface IParams {
 
 function Produtores({ topo: Topo }: IParams) {
 
-    const [titulo, setTitulo] = useState<String>("");
-    const [lista, setLista] = useState<Array<any>>([]);
-
-    useEffect(() => {
-        const produtores = carregaProdutores();
-        setTitulo(produtores.titulo);
-        setLista(produtores.lista);
-    }, []);
+    const [titulo, lista] = useProdutores();
 
     const TopoLista = () => {
         return (
