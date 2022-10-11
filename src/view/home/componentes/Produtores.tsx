@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
 import { carregaProdutores } from "../../../services/carregaDados"
+import Produtor from "./Produtor";
 
 interface IParams {
     topo: any
@@ -32,7 +33,7 @@ function Produtores({ topo: Topo }: IParams) {
             data={lista}
             ListHeaderComponent={TopoLista}
             keyExtractor={({ nome }) => nome}
-            renderItem={({ item: { nome } }) => <Text>{nome}</Text>}
+            renderItem={({ item }) => <Produtor {...item} />}
             style={{ backgroundColor: "white" }}
         />
     );
