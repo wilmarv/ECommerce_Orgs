@@ -1,14 +1,12 @@
 # ECommerce_Orgs
 
-Projeto desenvolvido durante o curso ![React Native: criando um app](https://cursos.alura.com.br/course/react-native-comecando-zero).
-Uma aplicação de Ecommerce de alimentos naturais para Android e IOS com React Native utilizando Expo.
+Projeto desenvolvido durante o curso ![React Native: utilizando e criando Hooks](https://cursos.alura.com.br/course/react-native-utilizando-criando-hooks).
+Uma aplicação de Ecommerce de alimentos naturais para Android e IOS com React Native com ambiente nativo.
 
 ##
 
-<div align="left">
-  <img height="300" src="https://user-images.githubusercontent.com/64598132/192114858-78b63b57-ceda-4ef0-9bbf-0119f2257ae5.png"/> 
-  <img height="300" src="https://user-images.githubusercontent.com/64598132/192114860-fec7e968-df35-48e4-8b1c-7dd030002f99.png"/> 
-  <img height="300" src="https://user-images.githubusercontent.com/64598132/192114862-e82c2b79-9c47-4dcf-968c-2661c0615af8.png"/> 
+<div align="center">
+  <img height="300" src="https://user-images.githubusercontent.com/64598132/195137712-5624c3fb-db43-4da9-bcc9-2da62a0d81c5.gif"/> 
 </div>
 
 ## 🚀 Começando
@@ -17,21 +15,25 @@ Instruções para executar projeto na maquina local.
 
 ### 📋 Pré-requisitos
 
- * ![Node Js](https://nodejs.org/en/download/) compilador do javaScript
+#### Windows / Linux
+
+ * ![chocolatey](https://chocolatey.org/install)
+ * ![Node Js](https://nodejs.org/en/download/)
+ * ![JDK](https://www.oracle.com/br/java/technologies/downloads/)
+ * ![Android Studio](https://developer.android.com/studio/install?hl=pt-br)
+
+#### MacOs
+
+ * ![HomeBrew](https://brew.sh/index_pt-br)
+ * ![Node Js](https://nodejs.org/en/download/)
+ * ![Watchman](https://facebook.github.io/watchman/docs/install.html#-homebrew)
+ * ![JDK](https://www.oracle.com/br/java/technologies/downloads/)
+ * ![Android Studio](https://developer.android.com/studio/install?hl=pt-br)
+
  
 ### 🔧 Instalação
 
-#### Primeiro passo instalar Expo Cli.
-
-Abra o terminal e execute 
-```
-npm install -g expo-cli
-```
-ou
-```
-yarn global add expo-cli
-```
-#### Segundo passo baixar dependencia do projeto.
+#### Baixar dependencia do projeto.
 
 Abrindo o terminal no diretorio do projeto execute o comando
 
@@ -47,5 +49,25 @@ yarn
 Continuando com o terminal no diretorio do projeto execute 
 
 ```
-expo start
+npm start
 ```
+ou
+```
+yarn start
+```
+
+### 📱 Debbugando no android
+
+Com o emulador ja inicializado abra outra janela do terminal e execute:
+
+```
+npx react-native run-android
+```
+### 📱 Debbugando no IOS
+
+Com o emulador ja inicializado abra outra janela do terminal e execute:
+
+```
+npx react-native run-ios
+```
+
