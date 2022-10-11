@@ -3,8 +3,7 @@ import Topo from "./componentes/Topo";
 
 function Home() {
     return <>
-        <Topo />
-        <Produtores />
+        <Produtores topo={Topo} />
     </>
 }
 export default Home;

@@ -1,15 +1,51 @@
-import { useEffect } from "react";
-import { Text } from "react-native";
+import { useEffect, useState } from "react";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 import { carregaProdutores } from "../../../services/carregaDados"
 
-function Produtores() {
+interface IParams {
+    topo: any
+}
+
+function Produtores({ topo: Topo }: IParams) {
+
+    const [titulo, setTitulo] = useState<String>("");
+    const [lista, setLista] = useState<Array<any>>([]);
 
     useEffect(() => {
-        const returnor = carregaProdutores();
-        console.log(returnor);
+        const produtores = carregaProdutores();
+        setTitulo(produtores.titulo);
+        setLista(produtores.lista);
     }, []);
 
-    return <Text>teste</Text>
+    const TopoLista = () => {
+        return (
+            <>
+                <Topo />
+                <Text style={styles.titulo}>{titulo}</Text>
+            </>
+        );
+    };
+
+    return (
+        <FlatList
+            data={lista}
+            ListHeaderComponent={TopoLista}
+            keyExtractor={({ nome }) => nome}
+            renderItem={({ item: { nome } }) => <Text>{nome}</Text>}
+            style={{ backgroundColor: "white" }}
+        />
+    );
 }
 export default Produtores;
+
+const styles = StyleSheet.create({
+    titulo: {
+        fontSize: 20,
+        lineHeight: 32,
+        marginHorizontal: 16,
+        marginTop: 16,
+        fontWeight: "bold",
+        color: "#464646"
+    },
+});
