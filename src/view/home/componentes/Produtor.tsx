@@ -1,4 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Estrelas from "../../../componentes/Estrelas";
 
 interface IProdutor {
     nome: string,
@@ -8,14 +10,22 @@ interface IProdutor {
 }
 
 function Produtor({ nome, imagem, distancia, estrelas }: IProdutor) {
+
+    const [selecionado, setSelecionado] = useState<boolean>(false);
+
     return (
-        <View style={styles.cartao}>
+        <TouchableOpacity
+            onPress={() => setSelecionado(!selecionado)}
+            style={styles.cartao}>
             <Image style={styles.image} source={imagem} accessibilityLabel={nome} />
             <View style={styles.informacoes}>
-                <Text style={styles.nome}>{nome}</Text>
+                <View>
+                    <Text style={styles.nome}>{nome}</Text>
+                    <Estrelas quantidade={estrelas} editavel={selecionado} grande={selecionado} />
+                </View>
                 <Text style={styles.distancia}>{distancia}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 export default Produtor;
