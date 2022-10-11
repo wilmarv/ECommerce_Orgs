@@ -1,6 +1,10 @@
+import Produtores from "./componentes/Produtores";
 import Topo from "./componentes/Topo";
 
 function Home() {
-    return <Topo />
+    return <>
+        <Topo />
+        <Produtores />
+    </>
 }
 export default Home;
