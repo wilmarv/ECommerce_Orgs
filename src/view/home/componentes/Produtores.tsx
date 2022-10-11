@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text } from "react-native";
 
 import { carregaProdutores } from "../../../services/carregaDados"
 import Produtor from "./Produtor";
