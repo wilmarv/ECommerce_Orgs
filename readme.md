@@ -33,7 +33,6 @@ Instruções para executar projeto na maquina local.
  
 ### 🔧 Instalação
 
-```
 #### Baixar dependencia do projeto.
 
 Abrindo o terminal no diretorio do projeto execute o comando
