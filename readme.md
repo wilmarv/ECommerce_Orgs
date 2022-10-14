@@ -44,7 +44,14 @@ ou
 ```
 yarn
 ```
+
+##### MacOs
+Execute comando adicional caso esteja no macOs
  
+```
+npx pod-install ios
+```
+
 ### ⚙️ Inicializando o Ecommerce_Org
 Continuando com o terminal no diretorio do projeto execute 
 

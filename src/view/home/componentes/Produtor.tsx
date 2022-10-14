@@ -1,71 +1,74 @@
-import { useReducer, useMemo } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Estrelas from "../../../componentes/Estrelas";
+import React, { useMemo } from 'react';
+import { View, TouchableOpacity, Text, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 
-interface IProdutor {
-    nome: string,
-    imagem: any,
-    distancia: number,
-    estrelas: number
-}
+import Estrelas from '../../../componentes/Estrelas';
 
 const distanciaEmMetros = (distancia: number) => {
-    return `${distancia} m`
+    return `${distancia}m`;
 }
 
-function Produtor({ nome, imagem, distancia, estrelas }: IProdutor) {
+interface ITop {
+    nome: string,
+    imagem: ImageSourcePropType,
+    distancia: number,
+    estrelas: number,
+    aoPressionar: () => void
+}
 
-    const [selecionado, inverterSelecao] = useReducer(
-        (selecionado) => !selecionado, false);
-
-
-    const distanciaEmMetrosTexto = useMemo(
-        () => distanciaEmMetros(distancia), [distancia]);
-
-    return (
-        <TouchableOpacity
-            onPress={inverterSelecao}
-            style={styles.cartao}>
-            <Image style={styles.image} source={imagem} accessibilityLabel={nome} />
-            <View style={styles.informacoes}>
-                <View>
-                    <Text style={styles.nome}>{nome}</Text>
-                    <Estrelas quantidade={estrelas} editavel={selecionado} grande={selecionado} />
-                </View>
-                <Text style={styles.distancia}>{distanciaEmMetrosTexto}</Text>
-            </View>
-        </TouchableOpacity>
+export default function Produtor({ nome, imagem, distancia, estrelas, aoPressionar }: ITop) {
+    const distanciaTexto = useMemo(
+        () => distanciaEmMetros(distancia),
+        [distancia]
     );
-}
-export default Produtor;
 
-const styles = StyleSheet.create({
+    return <TouchableOpacity
+        style={estilos.cartao}
+        onPress={aoPressionar}
+    >
+        <Image source={imagem} style={estilos.imagem} accessibilityLabel={nome} />
+        <View style={estilos.informacoes}>
+            <View>
+                <Text style={estilos.nome}>{nome}</Text>
+                <Estrelas
+                    quantidade={estrelas}
+                />
+            </View>
+            <Text style={estilos.distancia}>{distanciaTexto}</Text>
+        </View>
+    </TouchableOpacity>
+}
+
+const estilos = StyleSheet.create({
     cartao: {
-        backgroundColor: "#F6F6F6",
+        backgroundColor: '#F6F6F6',
         marginVertical: 8,
         marginHorizontal: 16,
         borderRadius: 6,
         flexDirection: "row",
+
+        // Android
         elevation: 4,
-        shadowColor: "#000",
+
+        // iOS
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
-            height: 2
+            height: 2,
         },
         shadowOpacity: 0.23,
-        shadowRadius: 2.62
+        shadowRadius: 2.62,
     },
-    image: {
+    imagem: {
         width: 48,
         height: 48,
         borderRadius: 6,
         marginVertical: 16,
-        marginLeft: 16
+        marginLeft: 16,
     },
     informacoes: {
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         marginLeft: 8,
         marginVertical: 16,
         marginRight: 16,
@@ -73,10 +76,10 @@ const styles = StyleSheet.create({
     nome: {
         fontSize: 14,
         lineHeight: 22,
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
     distancia: {
         fontSize: 12,
         lineHeight: 19,
-    }
+    },
 });

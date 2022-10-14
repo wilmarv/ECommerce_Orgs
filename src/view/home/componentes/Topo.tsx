@@ -1,57 +1,54 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import Assents from "../../../contants/assents";
-import { carregaTopo } from "../../../services/carregaDados";
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
-class Topo extends React.Component {
+const logo = require("../../../assets/logo.png");
+import useTextos from "../../../hooks/useTextos";
+import Textos from '../../../interfaces/textos';
 
-    state = {
-        topo: {
-            boasVindas: "",
-            legenda: "",
-        }
-    }
-
-    atualizaTopo() {
-        this.setState({ topo: carregaTopo() })
-    }
-
-    componentDidMount(): void {
-        this.atualizaTopo();
-    }
-
-    render(): React.ReactNode {
-        return (
-            <View style={styles.topo}>
-                <Image style={styles.image} source={Assents.topo} />
-                <Text style={styles.boasVindas}>{this.state.topo.boasVindas}</Text>
-                <Text style={styles.legenda}>{this.state.topo.legenda}</Text>
-            </View>
-        );
-    }
+interface ITop {
+  melhoresProdutores: boolean
 }
 
-const styles = StyleSheet.create({
-    topo: {
-        backgroundColor: "#F6F6F6",
-        padding: 16,
-    },
-    image: {
-        width: 70,
-        height: 28
-    },
-    boasVindas: {
-        marginTop: 24,
-        fontSize: 26,
-        lineHeight: 42,
-        fontWeight: "bold",
-        color: "#464646"
-    },
-    legenda: {
-        fontSize: 16,
-        lineHeight: 26,
-        color: "#A3A3A3"
-    }
-});
+export default function Topo({ melhoresProdutores }: ITop) {
+  const { boasVindas, legenda, legendaMelhoresProdutores } = useTextos() as Textos;
 
-export default Topo;
+  return <>
+    <View style={estilos.topo}>
+      <Image source={logo} style={estilos.imagem} />
+      <Text style={estilos.boasVindas}>{melhoresProdutores ? "" : boasVindas}</Text>
+      <Text style={estilos.legenda}>{melhoresProdutores ? legendaMelhoresProdutores : legenda}</Text>
+    </View>
+  </>
+}
+
+const estilos = StyleSheet.create({
+  topo: {
+    backgroundColor: '#F6F6F6',
+    padding: 16,
+  },
+  compra: {
+    backgroundColor: '#EAF5F3',
+    padding: 16,
+  },
+  compraMensagem: {
+    fontSize: 16,
+    lineHeight: 26,
+    color: '#464646',
+  },
+  imagem: {
+    width: 70,
+    height: 28,
+  },
+  boasVindas: {
+    marginTop: 24,
+    fontSize: 26,
+    lineHeight: 42,
+    fontWeight: 'bold',
+    color: '#464646'
+  },
+  legenda: {
+    fontSize: 16,
+    lineHeight: 26,
+    color: '#A3A3A3',
+  }
+});

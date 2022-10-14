@@ -1,9 +1,13 @@
 import { SafeAreaView, StyleSheet } from "react-native";
-import Home from "./src/view/home";
+import useProdutores from "./src/hooks/useProdutores";
+import Home from "./src/view/Home";
 
 function App() {
+
+  const produtores = useProdutores(false);
+
   return <SafeAreaView style={styles.tela}>
-    <Home />
+    <Home melhoresProdutores={false} />
   </SafeAreaView>
 }
 
