@@ -4,7 +4,7 @@ import Produtores from '../interfaces/produtores';
 
 import { carregaProdutores } from '../servicos/carregaDados';
 
-export default function useProdutores(melhoresProdutores: Produtores | boolean) {
+export default function useProdutores(melhoresProdutores: boolean) {
     const [lista, setLista] = useState<Array<Produtor>>([]);
 
     useEffect(() => {
