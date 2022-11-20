@@ -30,7 +30,7 @@ export default function Produtores({ melhoresProdutores }: IHome) {
     data={lista}
     renderItem={
       ({ item }) => <Produtor {...item} aoPressionar={() => {
-        navigation.navigate("Produtor");
+        navigation.navigate("Produtor", item);
       }} />
     }
     keyExtractor={({ nome }) => nome}

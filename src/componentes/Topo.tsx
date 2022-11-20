@@ -1,11 +1,12 @@
 import React from 'react';
 import { Image, StyleSheet, Dimensions, TouchableOpacity, ImageSourcePropType } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
 import Texto from './Texto';
 
-const Gradiente = require("../assets/gradiente.svg");
+const gradiente = require("../assets/gradiente.svg");
 const topo = require("../assets/topo.png");
-const VoltarSVG = require("../assets/voltar.svg");
+const voltarSVG = require("../assets/voltar.svg");
 
 const largura = Dimensions.get('screen').width;
 const ALTURA_PADRAO = 270;
@@ -18,14 +19,23 @@ interface ITopo {
 
 function Topo({ titulo, imagem = topo, altura = ALTURA_PADRAO }: ITopo) {
   const estilos = funcaoEstilos(altura);
+
   return <>
     <Image source={imagem} style={estilos.topo} />
-    <Gradiente width={largura} height={130 / 360 * largura} style={estilos.gradiente} />
+    <SvgUri
+      width={largura}
+      height={130 / 360 * largura} style={estilos.gradiente}
+      source={gradiente}
+    />
     <Texto style={estilos.titulo}>{titulo}</Texto>
     <TouchableOpacity
       onPress={() => { }}
       style={estilos.botaoVoltar}>
-      <VoltarSVG color='white' style={estilos.voltar} />
+      <SvgUri
+        source={voltarSVG}
+        style={estilos.voltar}
+        color="white"
+      />
     </TouchableOpacity>
   </>
 }
