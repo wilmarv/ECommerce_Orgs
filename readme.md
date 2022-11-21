@@ -1,6 +1,6 @@
 # ECommerce_Orgs
 
-Projeto desenvolvido durante o curso ![React Native: utilizando e criando Hooks](https://cursos.alura.com.br/course/react-native-utilizando-criando-hooks).
+Projeto desenvolvido durante o curso ![React Native: criando menu e navegando entre telas](https://cursos.alura.com.br/course/react-native-criando-menu-navegando-telas).
 Uma aplicação de Ecommerce de alimentos naturais para Android e IOS com React Native com ambiente nativo.
 
 ##
@@ -44,7 +44,14 @@ ou
 ```
 yarn
 ```
+
+##### MacOs
+Execute comando adicional caso esteja no macOs
  
+```
+npx pod-install ios
+```
+
 ### ⚙️ Inicializando o Ecommerce_Org
 Continuando com o terminal no diretorio do projeto execute 
 
@@ -70,4 +77,3 @@ Com o emulador ja inicializado abra outra janela do terminal e execute:
 ```
 npx react-native run-ios
 ```
-

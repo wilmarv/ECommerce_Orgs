@@ -1,10 +1,12 @@
 import { SafeAreaView, StyleSheet } from "react-native";
-import Home from "./src/view/home";
+import AppRotas from "./src/rotas/AppRotas";
 
 function App() {
-  return <SafeAreaView style={styles.tela}>
-    <Home />
-  </SafeAreaView>
+  return (
+    <SafeAreaView style={styles.tela}>
+      <AppRotas />
+    </SafeAreaView>
+  );
 }
 
 export default App;

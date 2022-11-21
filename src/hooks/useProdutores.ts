@@ -1,17 +1,26 @@
 import { useState, useEffect } from 'react';
-import { carregaProdutores } from '../services/carregaDados';
+import Produtor from '../interfaces/produtor';
+import Produtores from '../interfaces/produtores';
 
-function useProdutores() {
-    const [titulo, setTitulo] = useState<String>("");
-    const [lista, setLista] = useState<Array<any>>([]);
+import { carregaProdutores } from '../servicos/carregaDados';
+
+export default function useProdutores(melhoresProdutores: boolean) {
+    const [lista, setLista] = useState<Array<Produtor>>([]);
 
     useEffect(() => {
-        const produtores = carregaProdutores();
-        setTitulo(produtores.titulo);
-        setLista(produtores.lista);
+        const retorno = carregaProdutores();
+        retorno.lista.sort(
+            (produtor1, produtor2) => produtor1.distancia - produtor2.distancia,
+        );
+        let novaLista: Array<Produtor> = retorno.lista;
+
+        if (melhoresProdutores) {
+            novaLista = novaLista.filter(
+                (produtor) => produtor.estrelas > 3
+            );
+        }
+        setLista(novaLista);
     }, []);
 
-
-    return [titulo, lista];
+    return lista;
 }
-export default useProdutores;
