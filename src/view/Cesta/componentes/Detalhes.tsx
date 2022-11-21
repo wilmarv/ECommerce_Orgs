@@ -6,12 +6,14 @@ import Texto from '../../../componentes/Texto';
 import Textos from '../../../interfaces/textos';
 import Produtor from '../../../interfaces/produtor';
 import DetalhesCesta from '../../../interfaces/detalhesCesta';
+import { useNavigation } from "@react-navigation/native"
 
-interface IDetalhes extends DetalhesCesta{
+interface IDetalhes extends DetalhesCesta {
   produtor: Produtor,
 }
 
 export default function Detalhes({ nome, produtor, descricao, preco }: IDetalhes) {
+  const navigation = useNavigation();
   const { botaoComprar } = useTextos() as Textos;
 
   return <>
@@ -25,7 +27,7 @@ export default function Detalhes({ nome, produtor, descricao, preco }: IDetalhes
 
     <TouchableOpacity
       style={estilos.botao}
-      onPress={() => { }}>
+      onPress={() => navigation.navigate("HomeScreen", { compra: { nome, timestamp: + new Date() } })}>
       <Texto style={estilos.textoBotao}>{botaoComprar}</Texto>
     </TouchableOpacity>
   </>

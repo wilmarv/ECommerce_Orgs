@@ -8,5 +8,6 @@ interface Textos {
     topoCesta: string,
     botaoComprar: string,
     tituloItens: string,
+    mensagemCompra: string
 }
 export default Textos;
